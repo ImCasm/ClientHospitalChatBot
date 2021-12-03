@@ -1,0 +1,77 @@
+<div class="container">
+  <h1>Asignación de citas</h1>
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-primary" (click)="save()">
+        Guardar
+      </button>
+    </div>
+  </div>
+  <div *ngIf="_appointments?.length === 0" class="alert alert-warning mt-3" role="alert">
+    No hay solicitudes pendientes
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="success && !errorMessage" class="alert alert-success mt-3" role="alert">
+    Se guardaron los datos correctamente.
+  </div>
+  <form *ngIf="frm" [formGroup]="frm">
+      <div formArrayName="appointments">
+        <div class="card p-3 mt-3" *ngFor="let appointForm of appointments.controls; let i = index" [formGroupName]="i">
+          <h6>Datos del usuario</h6>
+          <div class="row">
+            <div class="col-4">
+              <label class="form-label">Dni</label>
+              <input class="form-control" type="text" formControlName="dni">
+            </div>
+            <div class="col-4">
+              <label class="form-label">Nombres</label>
+              <input class="form-control" type="text" formControlName="firstName">
+            </div>
+            <div class="col-4">
+              <label class="form-label">Apellidos</label>
+              <input class="form-control" type="text" formControlName="lastName">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <label class="form-label">Entidad de salud</label>
+              <input class="form-control" type="text" formControlName="entity">
+            </div>
+            <div class="col-4">
+              <label class="form-label">Url asignación</label>
+              <input class="form-control" type="text" formControlName="url">
+            </div>
+          </div>
+          <hr>
+          <h6>Datos de la cita</h6>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" formControlName="assigned">
+                <label class="form-check-label">Asignada</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <label class="form-label">Id</label>
+              <input class="form-control" type="text" [disabled]="true" formControlName="id">
+            </div>
+            <div class="col-4">
+              <label class="form-label">Especialista</label>
+              <select class="form-control form-select" formControlName="doctorName" (change)="assign(i)">
+                <option *ngFor="let doctor of doctors" [value]="doctor">{{doctor}}</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label class="form-label">Fecha y hora</label>
+              <input class="form-control" type="datetime-local" formControlName="date" (change)="assign(i)">
+            </div>
+
+          </div>
+        </div>
+      </div>
+  </form>
+</div>

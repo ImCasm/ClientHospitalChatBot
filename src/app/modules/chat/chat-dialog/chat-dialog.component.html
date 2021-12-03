@@ -1,0 +1,32 @@
+<form [formGroup]="frm" class="container">
+  <h3 class="text-center">Bot de solicitud para citas</h3>
+  <div class="messaging w-70">
+    <div class="">
+      <div class="">
+        <div #scrolledChat class="msg_history p-3">
+          <div *ngFor="let message of messages" [class]="message.div1">
+            <div *ngIf="message.isBot" class="incoming_msg_img">
+              <img
+                src="./assets/img/chatbot-data.png"
+                alt="sunil"
+              />
+            </div>
+            <div [class]="message.div2">
+              <div [class]="message.div3">
+                <p>{{message.text}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="type_msg">
+          <div class="input_msg_write">
+            <input formControlName="response" type="text" (keyup.enter)="request()" class="write_msg" placeholder="Solicitar cita..." />
+            <button class="msg_send_btn" type="button" (click)="request()">
+              <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
