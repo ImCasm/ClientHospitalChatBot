@@ -1,10 +1,16 @@
 # HospitalChatBot
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.3.
+Este proyecto fue generado con  [Angular CLI](https://github.com/angular/angular-cli) version 10.2.3.
 
-## Development server
+Versión de la aplicación publicada en [GutHub Pages](https://imcasm.github.io/ClientHospitalChatBot/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Instalar paquetes
+
+Correr `npm install` para instalar los paquetes necesarios
+
+## Servidor de desarrollo
+
+Correr `ng serve` para levantar el servidor de desarrollo. Navegar a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambia alguno de los archivos de origen.
 
 ## Code scaffolding
 
